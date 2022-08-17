@@ -68,8 +68,13 @@ function comprar(opcionEntrada){
     id = opcionEntrada - 1;
     alert(`Usted ha seleccionado entradas de ${entradas[id].nombre}`);
 
-    this.stock = Number(prompt(`cantidad de entradas`));
-    ticketComprado.push(new Ticket(entradas[id].id, entradas[id].nombre, entradas[id].precio * stock, stock));
+    this.stock = Number(prompt(`cantidad de entradas para ${entradas[id].nombre}`));
+    if(this.stock > entradas[id].stock){
+        alert(`No hay stock suficientes, solo quedan ${entradas[id].stock} entradas`);
+    }else {
+        entradas[id].stock = entradas[id].stock - this.stock;
+        ticketComprado.push(new Ticket(entradas[id].id, entradas[id].nombre, entradas[id].precio * stock, stock));
+    }
 }
 
 function finalizarCompra(){
