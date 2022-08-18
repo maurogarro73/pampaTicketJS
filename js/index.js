@@ -88,3 +88,16 @@ function finalizarCompra(){
     alert(`Total a pagar por todas las entradas es de $${cont}`);
     console.log(ticketComprado);
 }
+
+/* Ordenar el array de menor precio a mayor */
+const ticketOrdenados =  entradas.sort((a, b) => {
+                            if (a.precio > b.precio) {
+                                return 1;
+                            }
+                            if (a.precio < b.precio) {
+                                return -1;
+                            }
+                            return 0;
+                        })
+
+console.log(ticketOrdenados);
